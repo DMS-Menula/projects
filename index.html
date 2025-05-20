@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menula De Silva - Projects Carousel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="text-center py-6 bg-white shadow">
+    <h1 class="text-2xl font-bold text-gray-800">Menula De Silva - Projects Carousel</h1>
+  </header>
+
+  <!-- Carousel -->
+  <section class="mt-6 max-w-3xl mx-auto carousel-container">
+    <div id="carouselTrack" class="carousel-track">
+      <a href="https://menula-de-silva.glitch.me/" target="_blank" class="carousel-slide">
+        <img src="img/1.png" alt="Slide 1" class="w-full rounded-xl" />
+      </a>
+      <a href="https://maduranga-wateproofing.vercel.app/" target="_blank" class="carousel-slide">
+        <img src="img/2.png" alt="Slide 2" class="w-full rounded-xl" />
+      </a>
+      <a href="https://saceaa.godaddysites.com/" target="_blank" class="carousel-slide">
+        <img src="img/3.png" alt="Slide 3" class="w-full rounded-xl" />
+      </a>
+      <a href="https://instantai.glitch.me/" target="_blank" class="carousel-slide">
+        <img src="img/4.png" alt="Slide 4" class="w-full rounded-xl" />
+      </a>
+      <a href="https://mosburgers.vercel.app/" target="_blank" class="carousel-slide">
+        <img src="img/5.png" alt="Slide 5" class="w-full rounded-xl" />
+      </a>
+      <a href="https://drive.google.com/file/d/1OR0zq1iKQCMJaqitABygLY7D82ZbM_53/view" target="_blank" class="carousel-slide">
+        <img src="img/6.png" alt="Slide 6" class="w-full rounded-xl" />
+      </a>
+    </div>
+
+    <!-- Arrows -->
+    <button id="prevBtn"
+      class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-200">
+      &#8592;
+    </button>
+    <button id="nextBtn"
+      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-200">
+      &#8594;
+    </button>
+  </section>
+
+  <footer class="mt-12 bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2025 Menula De Silva. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let index = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    // Autoplay
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    }, 4000);
+  </script>
+</body>
+
+</html>
